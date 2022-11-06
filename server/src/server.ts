@@ -14,12 +14,14 @@ async function start() {
   })
 
   fastify.get('/pools/count', async () => {
-    return await prisma.pool.count()
+    return {
+      count: await prisma.pool.count()
+    }
   })
 
 
 
-  await fastify.listen({ port: 3333, host: '0.0.0.0' });
+  await fastify.listen({ port: 3333,/* host: '0.0.0.0' */ });
 
 
 }
