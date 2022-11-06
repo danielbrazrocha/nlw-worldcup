@@ -19,6 +19,25 @@ async function start() {
     }
   })
 
+  fastify.get("/users/count", async () => {
+    const count = await prisma.user.count();
+
+    return { count };
+  });
+
+  fastify.get("/guesses/count", async () => {
+    const count = await prisma.guess.count();
+
+    return { count };
+  });
+
+  fastify.post("/pools", async (request, reply) => {
+
+
+    const { title } = request.body;
+
+    return { title };
+  });
 
 
   await fastify.listen({ port: 3333,/* host: '0.0.0.0' */ });
