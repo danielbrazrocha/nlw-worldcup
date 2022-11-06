@@ -23,5 +23,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
+  "overrides": {
+    "react": "18.0.0"
+  },
   "private": true
 }
