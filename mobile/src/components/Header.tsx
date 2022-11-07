@@ -3,6 +3,8 @@ import { CaretLeft, Export } from 'phosphor-react-native';
 
 import { ButtonIcon } from './ButtonIcon';
 
+import { useNavigation } from '@react-navigation/native';
+
 interface Props {
   title: string;
   showBackButton?: boolean;
@@ -12,12 +14,14 @@ interface Props {
 export function Header({ title, showBackButton = false, showShareButton = false }: Props) {
   const EmptyBoxSpace = () => (<Box w={6} h={6} />);
 
+  const { navigate } = useNavigation();
+
   return (
     <HStack w="full" h={24} bgColor="gray.800" alignItems="flex-end" pb={5} px={5}>
       <HStack w="full" alignItems="center" justifyContent="space-between">
         {
           showBackButton
-            ? <ButtonIcon icon={CaretLeft} />
+            ? <ButtonIcon icon={CaretLeft} onPress={() => navigate('pools')} />
             : <EmptyBoxSpace />
         }
 
